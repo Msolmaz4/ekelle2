@@ -62,13 +62,13 @@ const useAuthCall = () => {
       dispatch(fetchFail());
       // console.log(error);
       toastErrorNotify("Login can not be performed");
-      toastErrorNotify("ilk sira");
+     
     }
   };
   const refresh = async () => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(`${BASE_URL}/refresh`, refreshh);
+      const { data } = await axios.post(`${BASE_URL}auth/refresh`, refreshh);
       console.log(data.error == "true", "kontrol et");
       dispatch(loginSuccess(data));
       toastSuccessNotify("refresh");
@@ -257,7 +257,7 @@ const userAll = async()=>{
     try {
       if (user?._id) {
         const follower = await axios.get(
-          `https://kellerstore.onrender.com/follow/follower`,
+          `${BASE_URL}follow/follower`,
           {
             headers: {
               Authorization: `Bearer ${access}`,
@@ -270,7 +270,7 @@ const userAll = async()=>{
       }
     } catch (error) {
       toastErrorNotify(error);
-      toastErrorNotify("followerget");
+     // toastErrorNotify("followerget");
     }
   };
   return {
