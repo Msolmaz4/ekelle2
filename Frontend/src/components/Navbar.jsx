@@ -25,8 +25,7 @@ const Navbar = () => {
   const { messages } = useSelector((state) => state.mesaj);
 
   //console.log(messages);
-  const messageRe = messages
-    .flatMap((item) => item?.messages) // Tüm mesajları tek bir düzlemde toplar
+  const messageRe = messages?.flatMap((item) => item?.messages) // Tüm mesajları tek bir düzlemde toplar
     .filter((message) => !message.isRead) // isRead değeri false olanları filtreler
     .filter((message) => message?.senderId?._id !== user?._id); //mesaj gonderiken gondereini diskalifiye icin gidermek icin
 
